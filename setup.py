@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='mocanexion2',
-    version='1.0.1',
+    version='0.1',
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     url='https://github.com/Hittwar/mocanexion2',
     license='The Unlicense',
