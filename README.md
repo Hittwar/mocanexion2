@@ -15,11 +15,13 @@ Once authenticated, you can then run MOCA commands and have the results returned
 
 ### Example
 ```
+from mocanexion import MocaNexion2
 moca = MocaNexion2()
 moca.connect("Moca service", "User", "Password", device=None, warehouse=None, locale=None)
 status, res = moca.execute("publish data where test = 'Success'")
 ```
 ```
+from mocanexion import MocaNexion2
 moca = MocaNexion2()
 moca.connect("http://localhost:7700/service", "hittwar", "pass", device=None, warehouse=None, locale=None)
 status, res = moca.execute("publish data where test = 'Success'")
