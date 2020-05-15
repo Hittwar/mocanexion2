@@ -90,11 +90,6 @@ class MocaNexion2():
         s = requests.Session()
         headers = {'Content-Type': 'application/moca-xml'}
 
-        ping = self.__build_xml(user, "ping")
-
-        s.post(conn, data=ping, headers=headers)
-
-
         login_query = "login user where usr_id = '" + user + "' and usr_pswd = '" + password + "'"
         login = self.__build_xml(user, login_query, None, device, warehouse, locale)
 
@@ -113,6 +108,7 @@ class MocaNexion2():
         else:
             error = response.find("./message[1]").text
             raise ConnectionError(error)
+
 
 
     def execute(self, cmd):
