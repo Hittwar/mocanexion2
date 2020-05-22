@@ -37,3 +37,12 @@ status, res = moca.execute("list inventory")
 df = pd.DataFrame(res)
 df.head()
 ```
+
+## WITH CERTIFICATION SSL
+To connect to BY Cloud, It is necessary to add the certificate(ssl - on Base64 code) of the service to which we want to connect to the Python cacert. 
+
+Where is the cacert file
+```
+import certifi
+certifi.where()
+```
