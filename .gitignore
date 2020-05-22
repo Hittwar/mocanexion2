@@ -3,3 +3,4 @@ dist
 .ipynb_checkpoints
 mocanexion2.egg-info
 Untitled.ipynb
+mocanexion/_pycache_

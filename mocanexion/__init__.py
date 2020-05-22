@@ -2,6 +2,10 @@ import pandas as pd
 import requests
 import xml.etree.ElementTree as et
 from xml.dom import minidom
+from requests.adapters import HTTPAdapter
+from bs4 import BeautifulSoup
+from requests.auth import HTTPBasicAuth
+import certifi
 
 class MocaNexion2():
     """
@@ -93,7 +97,7 @@ class MocaNexion2():
         login_query = "login user where usr_id = '" + user + "' and usr_pswd = '" + password + "'"
         login = self.__build_xml(user, login_query, None, device, warehouse, locale)
 
-        response = et.fromstring(s.post(conn, data=login, headers=headers).text)
+        response = et.fromstring(s.post(conn, data=login, headers=headers, verify = certifi.where()).text)
         login_status = response.find("./status[1]").text
 
         if login_status == '0':
@@ -119,14 +123,14 @@ class MocaNexion2():
         headers = {'Content-Type': 'application/moca-xml'}
 
         command = self.__build_xml(self.user, cmd, self.session_key, self.device, self.warehouse, self.locale)
-        response = et.fromstring(s.post(self.conn, data=command, headers=headers).text)
+        response = et.fromstring(s.post(self.conn, data=command, headers=headers, verify = certifi.where()).text)
 
         status = response.find("./status[1]").text
 
         if status == '523':
             self.connect(self.conn, self.user, self.password, self.device, self.warehouse, self.locale)
             command = self.__build_xml(self.user, cmd, self.session_key, self.device, self.warehouse, self.locale)
-            response = et.fromstring(s.post(self.conn, data=command, headers=headers).text)
+            response = et.fromstring(s.post(self.conn, data=command, headers=headers, verify = certifi.where()).text)
             status = response.find("./status[1]").text
 
         if status != '0' and status != '510':
