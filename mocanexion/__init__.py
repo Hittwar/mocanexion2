@@ -2,9 +2,6 @@ import pandas as pd
 import requests
 import xml.etree.ElementTree as et
 from xml.dom import minidom
-from requests.adapters import HTTPAdapter
-from bs4 import BeautifulSoup
-from requests.auth import HTTPBasicAuth
 import certifi
 
 class MocaNexion2():
